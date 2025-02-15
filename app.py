@@ -15,11 +15,13 @@ import chardet
 app = Flask(__name__)
 CORS(app)
 
+port = int(os.environ.get('PORT', 5000))
+
 # Set Tesseract Path - MODIFY THIS PATH according to your installation
 # Common Windows paths:
 # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Modify this line!
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Modify this line!
 
 # Configure allowed file extensions
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx', 'xlsx', 'csv', 'jpeg', 'jpg', 'png', 'txt'}
@@ -151,4 +153,4 @@ def extract_text():
         }), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port)
