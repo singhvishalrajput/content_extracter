@@ -91,7 +91,7 @@
             try {
                 loadingDiv.style.display = 'block';
 
-                const response = await fetch('http://localhost:5000/extract-text', {
+                const response = await fetch('https://content-extracter-api.onrender.com/extract-text', {
                     method: 'POST',
                     body: formData
                 });
